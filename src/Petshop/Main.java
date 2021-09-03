@@ -1,7 +1,14 @@
 package PetShop;
 
-import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.lang.String;
+import javax.swing.JOptionPane;
+
+import PetShop.Veterinario;
+import PetShop.Funcionario;
+import PetShop.Recepcionista;
+
 
 public class Main {
 
@@ -11,44 +18,44 @@ public class Main {
 
         List<Funcionario> listaFuncionario = new ArrayList<>();
 
-            opcao = JOptionPane.showInputDialog("CADASTRO DE FUNCIONÁRIO\n"
-                    + "1 - Recepcionista;\n"
-                    + "2 - Veterinario.");
+        opcao = JOptionPane.showInputDialog("CADASTRO DE FUNCIONÁRIO\n"
+                + "1 - Recepcionista;\n"
+                + "2 - Veterinario.");
 
-            switch (Integer.parseInt(opcao)){
+        switch (Integer.parseInt(opcao)) {
 
-                case 1:
-                    Funcionario recepcionista = new Recepcionista(
-                           JOptionPane.showInputDialog("Nome do Funcionario: ");
-                           JOptionPane.showInputDialog("CPF: ");
-                           JOptionPane.showInputDialog("Função: ");
+            case 1:{
+                Funcionario recepcionista = new Recepcionista(
+                        JOptionPane.showInputDialog("Nome do Funcionario: "),
+                        JOptionPane.showInputDialog("CPF: "),
+                        JOptionPane.showInputDialog("Função: "));
 
-                    listaFuncionario.add(recepcionista);
+                listaFuncionario.add(recepcionista);
 
 
-                    break;
+                break;
+        }
+            case 2:
+                Funcionario veterinario = new Veterinario(
+                        JOptionPane.showInputDialog("Nome do funcionário: "),
+                        JOptionPane.showInputDialog("CPF: "),
+                        JOptionPane.showInputDialog("Nº do CRMV: "),
+                        JOptionPane.showInputDialog("Função: "));
+                listaFuncionario.add(veterinario);
 
-                case 2:
-                    Funcionario veterinario = new Veterinario(
-                            JOptionPane.showInputDialog("Nome do funcionário: ");
-                            JOptionPane.showInputDialog("CPF: ");
-                            JOptionPane.showInputDialog("Nº do CRMV: ");
-                            JOptionPane.showInputDialog("Função: ");
-                    listaFuncionario.add(veterinario);
+                break;
 
-                    break;
+            default:
+                JOptionPane.showMessageDialog(null, "Item invalido!!!");
+                break;
 
-                default:
-                    JOptionPane.showMessageDialog(null, "Item invalido!!!");
-                    break;
-
-            }
+        }
 
         for(Funcionario x : listaFuncionario) {
             JOptionPane.showMessageDialog(null,"nome: " + x.getNome() + "\nFunção: " + x.getFuncao() + "\nCPF: " + x.getCpf());
         }
     }
 
-    }
+}
 
 
